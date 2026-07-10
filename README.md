@@ -22,7 +22,7 @@ A console-based Helpdesk Ticket Management System developed in Python.
 Clone the repository.
 
 ```bash
-git clone https://github.com/yourusername/Python-Helpdesk-Ticket-System.git
+git clone https://github.com/Phabwey/Python-Helpdesk-Ticket-System.git
 ```
 
 Move into the folder.
