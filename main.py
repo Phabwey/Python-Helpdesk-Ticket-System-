@@ -1,30 +1,45 @@
-from ticket_manager import TicketManager
-
-manager = TicketManager()
-
 while True:
-    print("\n=== IT Help Desk Ticket System ===")
-    print("1. Create ticket")
-    print("2. View tickets")
-    print("3. Update ticket status")
-    print("4. Exit")
+    print("\n--- Helpdesk Ticket System ---")
+    print("1. Create Ticket")
+    print("2. View Tickets")
+    print("3. Search Ticket")
+    print("4. Update Status")
+    print("5. Delete Ticket")
+    print("6. Exit")
 
     choice = input("Choose an option: ")
 
     if choice == "1":
-        name = input("Customer name: ")
-        issue = input("Issue description: ")
-        manager.create_ticket(name, issue)
+        ticket_id = input("Ticket ID: ")
+        customer_name = input("Customer name: ")
+        issue = input("Issue: ")
+        priority = input("Priority (Low, Medium, High): ")
+
+        manager.create_ticket(
+            ticket_id,
+            customer_name,
+            issue,
+            priority
+        )
 
     elif choice == "2":
         manager.view_tickets()
 
     elif choice == "3":
-        ticket_id = input("Ticket ID: ")
-        status = input("New status (Open/In Progress/Resolved): ")
-        manager.update_status(ticket_id, status)
+        ticket_id = input("Enter ticket ID: ")
+        manager.search_ticket(ticket_id)
 
     elif choice == "4":
+        ticket_id = input("Ticket ID: ")
+        status = input("New status: ")
+
+        manager.update_status(ticket_id, status)
+
+    elif choice == "5":
+        ticket_id = input("Ticket ID: ")
+        manager.delete_ticket(ticket_id)
+
+    elif choice == "6":
         print("Goodbye!")
         break
 
