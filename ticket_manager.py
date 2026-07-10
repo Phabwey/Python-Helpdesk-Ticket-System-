@@ -49,15 +49,15 @@ class TicketManager:
             if len(row) < 9:
                 continue
 
-            print(f"Ticket ID: {row[0]}")
-            print(f"Customer: {row[1]}")
-            print(f"Issue: {row[2]}")
-            print(f"Category: {row[3]}")
-            print(f"Technician: {row[4]}")
-            print(f"Priority: {row[5]}")
-            print(f"Status: {row[6]}")
-            print(f"Created: {row[7]} {row[8]}")
-            print("-" * 40)
+      print(f"Ticket ID: {row[0]}")
+      print(f"Customer: {row[1]}")
+      print(f"Issue: {row[2]}")
+      print(f"Category: {row[3]}")
+      print(f"Technician: {row[4]}")
+      print(f"Priority: {row[5]}")
+      print(f"Status: {row[6]}")
+      print(f"Created: {row[7]} {row[8]}")
+      print("-" * 40)
 
     # Search ticket by ID
     def search_ticket(self, ticket_id):
