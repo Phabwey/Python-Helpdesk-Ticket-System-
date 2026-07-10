@@ -123,26 +123,38 @@ class TicketManager:
             "'exported_tickets.csv'."
         )
 
-    # Count tickets
     def count_tickets(self):
 
-        open_count = 0
-        closed_count = 0
+    open_count = 0
+    closed_count = 0
 
-        with open(self.filename, "r") as file:
-            reader = csv.reader(file)
+    with open(self.filename, "r") as file:
+        reader = csv.reader(file)
+        next(reader)
 
-            next(reader)
+        for row in reader:
+            if len(row) < 7:
+                continue
 
-for row in reader:
-    if len(row) < 7:
-        continue
+            if row[6] == "Open":
+                open_count += 1
+            elif row[6] == "Closed":
+                closed_count += 1
 
-    if row[6] == "Open":
-        open_count += 1
-    elif row[6] == "Closed":
-        closed_count += 1 
+    print(f"Open tickets: {open_count}")
+    print(f"Closed tickets: {closed_count}")
+            
+
+           
+
+
+   
+        
+
+    
+        
+    
+        
 
              
-        print(f"Open tickets: {open_count}")
-        print(f"Closed tickets: {closed_count}")
+        
