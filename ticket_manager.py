@@ -1,53 +1,84 @@
 import csv
-import os
-from ticket import Ticket
+from datetime import datetime
 
-FILE_NAME = "tickets.csv"
 
 class TicketManager:
-    def __init__(self):
-        if not os.path.exists(FILE_NAME):
-            with open(FILE_NAME, "w", newline="") as file:
-                writer = csv.writer(file)
-                writer.writerow(
-                    ["Ticket ID", "Customer Name", "Issue", "Status"]
-                )
+    def __init__(self, filename="tickets.csv"):
+        self.filename = filename
 
-    def create_ticket(self, customer_name, issue):
-        ticket_id = self.generate_ticket_id()
-        ticket = Ticket(ticket_id, customer_name, issue)
+    # Create ticket with priority and date/time
+    def create_ticket(self, ticket_id, customer_name, issue, priority):
+        now = datetime.now()
 
-        with open(FILE_NAME, "a", newline="") as file:
+        ticket = [
+            ticket_id,
+            customer_name,
+            issue,
+            priority,
+            "Open",
+            now.strftime("%Y-%m-%d"),
+            now.strftime("%H:%M:%S")
+        ]
+
+        with open(self.filename, "a", newline="") as file:
             writer = csv.writer(file)
-            writer.writerow(ticket.to_list())
+            writer.writerow(ticket)
 
-        print(f"Ticket {ticket_id} created successfully.")
+        print("Ticket created successfully.")
 
+    # View all tickets
     def view_tickets(self):
-        with open(FILE_NAME, "r") as file:
+        with open(self.filename, "r") as file:
             reader = csv.reader(file)
+
             for row in reader:
                 print(row)
 
+    # Search ticket by ID
+    def search_ticket(self, ticket_id):
+        with open(self.filename, "r") as file:
+            reader = csv.reader(file)
+
+            for row in reader:
+                if row[0] == str(ticket_id):
+                    print("Ticket found:")
+                    print(row)
+                    return
+
+        print("Ticket not found.")
+
+    # Update status
     def update_status(self, ticket_id, new_status):
         rows = []
 
-        with open(FILE_NAME, "r") as file:
+        with open(self.filename, "r") as file:
             reader = csv.reader(file)
-            rows = list(reader)
 
-        for row in rows:
-            if row and row[0] == ticket_id:
-                row[3] = new_status
+            for row in reader:
+                if row[0] == str(ticket_id):
+                    row[4] = new_status
 
-        with open(FILE_NAME, "w", newline="") as file:
+                rows.append(row)
+
+        with open(self.filename, "w", newline="") as file:
             writer = csv.writer(file)
             writer.writerows(rows)
 
         print("Ticket updated.")
 
-    def generate_ticket_id(self):
-        with open(FILE_NAME, "r") as file:
-            count = sum(1 for _ in file)
+    # Delete ticket
+    def delete_ticket(self, ticket_id):
+        rows = []
 
-        return f"TKT-{count:03d}"
+        with open(self.filename, "r") as file:
+            reader = csv.reader(file)
+
+            for row in reader:
+                if row[0] != str(ticket_id):
+                    rows.append(row)
+
+        with open(self.filename, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(rows)
+
+        print("Ticket deleted.")
