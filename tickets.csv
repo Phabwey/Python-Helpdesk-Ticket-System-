@@ -1,0 +1,5 @@
+ticket_id,customer_name,issue,category,technician,priority,status,created_date,created_time
+
+1001,John Smith,Computer not starting,Hardware,David,High,Open,2026-07-10,10:30:15
+1002,Sarah Johnson,Email not working,Software,Mary,Medium,Closed,2026-07-10,11:15:40
+1003,Michael Brown,Internet connection lost,Network,Peter,Low,Open,2026-07-10,12:45:05
