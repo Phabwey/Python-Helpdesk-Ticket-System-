@@ -1,19 +1,68 @@
-# IT Help Desk Ticket System
+# Python Helpdesk Ticket System
 
-A Python-based help desk application that allows users to:
+A console-based Helpdesk Ticket Management System developed in Python.
 
-- Create support tickets
+## Features
+
+- Create tickets
 - View tickets
 - Update ticket status
-- Store data in CSV files
+- Save tickets to CSV
+- Object-Oriented Programming
+- File Handling
 
 ## Technologies
 
-- Python
+- Python 3
 - CSV
-- File handling
-- Object-oriented programming
+- Object-Oriented Programming
 
-## Run
+## Installation
 
+Clone the repository.
+
+```bash
+git clone https://github.com/yourusername/Python-Helpdesk-Ticket-System.git
+```
+
+Move into the folder.
+
+```bash
+cd Python-Helpdesk-Ticket-System
+```
+
+Run the application.
+
+```bash
 python main.py
+```
+
+## Folder Structure
+
+```
+Python-Helpdesk-Ticket-System/
+│
+├── main.py
+├── ticket.py
+├── ticket_manager.py
+├── tickets.csv
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+## Future Improvements
+
+- User Login
+- Priority Levels
+- Search Ticket
+- Delete Ticket
+- Assign Technician
+- Dashboard
+- Database Integration
+- GUI Version
+- Email Notifications
+
+## Author
+
+Paballo Litabe
