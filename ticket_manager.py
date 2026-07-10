@@ -134,7 +134,7 @@ class TicketManager:
 
             next(reader)
 
-                   for row in reader:
+for row in reader:
     if len(row) < 7:
         continue
 
@@ -143,8 +143,6 @@ class TicketManager:
     elif row[6] == "Closed":
         closed_count += 1 
 
-                
-
-
+             
         print(f"Open tickets: {open_count}")
         print(f"Closed tickets: {closed_count}")
