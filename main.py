@@ -10,7 +10,11 @@ while True:
     choice = input("Choose an option: ")
 
     if choice == "1":
-        ticket_id = input("Ticket ID: ")
+        try:
+    ticket_id = int(input("Ticket ID: "))
+except ValueError:
+    print("Please enter a valid ticket number.")
+    continue
         customer_name = input("Customer name: ")
         issue = input("Issue: ")
         priority = input("Priority (Low, Medium, High): ")
