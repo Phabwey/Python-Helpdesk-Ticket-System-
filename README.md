@@ -10,6 +10,14 @@ A console-based Helpdesk Ticket Management System developed in Python.
 - Save tickets to CSV
 - Object-Oriented Programming
 - File Handling
+- Create tickets
+✓ View tickets
+✓ Search tickets by ID
+✓ Delete tickets
+✓ Update ticket status
+✓ Priority levels (Low, Medium, High)
+✓ Automatic date and time tracking
+✓ CSV data storage
 
 ## Technologies
 
