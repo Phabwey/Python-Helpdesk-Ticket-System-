@@ -1,2 +1,19 @@
-# Python-Helpdesk-Ticket-System-
-Developed a Python-based help desk ticket management system. Implemented ticket creation, tracking, and status updates. Stored support data using CSV files and Python file handling. Applied object-oriented programming concepts and problem-solving skills. Used GitHub for version control and project management. 
+# IT Help Desk Ticket System
+
+A Python-based help desk application that allows users to:
+
+- Create support tickets
+- View tickets
+- Update ticket status
+- Store data in CSV files
+
+## Technologies
+
+- Python
+- CSV
+- File handling
+- Object-oriented programming
+
+## Run
+
+python main.py
