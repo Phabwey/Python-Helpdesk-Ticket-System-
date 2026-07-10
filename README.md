@@ -37,6 +37,16 @@ Run the application.
 python main.py
 ```
 
+## Usage
+
+After starting the application, users can:
+
+- Create a new support ticket
+- View all existing tickets
+- Update the status of a ticket
+- Save ticket information to a CSV file
+- Exit the application safely
+
 ## Folder Structure
 
 ```
@@ -50,6 +60,18 @@ Python-Helpdesk-Ticket-System/
 ├── LICENSE
 └── .gitignore
 ```
+
+## Learning Outcomes
+
+This project demonstrates the following Python concepts:
+
+- Object-Oriented Programming (OOP)
+- File Handling using CSV
+- Functions and Modules
+- Data Validation
+- Exception Handling
+- Menu-Driven Application Design
+- Clean Code Organization
 
 ## Future Improvements
 
@@ -66,3 +88,9 @@ Python-Helpdesk-Ticket-System/
 ## Author
 
 Paballo Litabe
+
+## Contact
+
+GitHub: https://github.com/Phabwey
+
+If you have any questions, suggestions, or feedback, feel free to open an issue or contact me through my GitHub profile.
