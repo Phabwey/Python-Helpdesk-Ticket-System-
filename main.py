@@ -5,8 +5,8 @@ manager = TicketManager()
 print("=" * 55)
 print("        PYTHON HELPDESK TICKET SYSTEM")
 print("=" * 55)
-print("Welcome!")
-print("Manage, track and update customer support tickets.")
+print("Welcome to the Python Helpdesk Ticket System")
+print("A simple command-line application for managing support tickets.")
 print("=" * 55)
 
 while True:
@@ -71,6 +71,7 @@ while True:
         )
 
     elif choice == "2":
+
         manager.view_tickets()
 
     elif choice == "3":
@@ -95,7 +96,10 @@ while True:
             print("Invalid status.")
             continue
 
-        manager.update_status(ticket_id, status)
+        manager.update_status(
+            ticket_id,
+            status
+        )
 
     elif choice == "5":
 
