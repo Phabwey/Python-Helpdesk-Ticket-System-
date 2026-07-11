@@ -6,7 +6,7 @@ class TicketManager:
     def __init__(self, filename="tickets.csv"):
         self.filename = filename
 
-    # Create ticket
+    # Create Ticket
     def create_ticket(
         self,
         ticket_id,
@@ -37,52 +37,70 @@ class TicketManager:
 
         print("Ticket created successfully.")
 
+    # View Tickets
     def view_tickets(self):
-    with open(self.filename, "r", newline="") as file:
-        reader = csv.reader(file)
-
-        # Skip the header row
-        next(reader)
-
-        for row in reader:
-            # Skip empty or incomplete rows
-            if len(row) < 9:
-                continue
-
-     print(f"Ticket ID: {row[0]}")
-     print(f"Customer: {row[1]}")
-     print(f"Issue: {row[2]}")
-     print(f"Category: {row[3]}")
-     print(f"Technician: {row[4]}")
-     print(f"Priority: {row[5]}")
-     print(f"Status: {row[6]}")
-     print(f"Created: {row[7]} {row[8]}")
-     print("-" * 40)
-
-    # Search ticket by ID
-    def search_ticket(self, ticket_id):
-
-        with open(self.filename, "r") as file:
+        with open(self.filename, "r", newline="") as file:
             reader = csv.reader(file)
+
+            # Skip header
+            next(reader, None)
 
             for row in reader:
 
+                if len(row) < 9:
+                    continue
+
+                print(f"Ticket ID: {row[0]}")
+                print(f"Customer: {row[1]}")
+                print(f"Issue: {row[2]}")
+                print(f"Category: {row[3]}")
+                print(f"Technician: {row[4]}")
+                print(f"Priority: {row[5]}")
+                print(f"Status: {row[6]}")
+                print(f"Created: {row[7]} {row[8]}")
+                print("-" * 40)
+
+    # Search Ticket by ID
+    def search_ticket(self, ticket_id):
+        with open(self.filename, "r", newline="") as file:
+            reader = csv.reader(file)
+
+            # Skip header
+            next(reader, None)
+
+            for row in reader:
+
+                if len(row) < 9:
+                    continue
+
                 if row[0] == str(ticket_id):
-                    print("Ticket found:")
-                    print(row)
+                    print("\nTicket Found")
+                    print("-" * 40)
+                    print(f"Ticket ID: {row[0]}")
+                    print(f"Customer: {row[1]}")
+                    print(f"Issue: {row[2]}")
+                    print(f"Category: {row[3]}")
+                    print(f"Technician: {row[4]}")
+                    print(f"Priority: {row[5]}")
+                    print(f"Status: {row[6]}")
+                    print(f"Created: {row[7]} {row[8]}")
+                    print("-" * 40)
                     return
 
         print("Ticket not found.")
 
-    # Update ticket status
+    # Update Ticket Status
     def update_status(self, ticket_id, new_status):
-
         rows = []
 
-        with open(self.filename, "r") as file:
+        with open(self.filename, "r", newline="") as file:
             reader = csv.reader(file)
 
             for row in reader:
+
+                if len(row) < 7:
+                    rows.append(row)
+                    continue
 
                 if row[0] == str(ticket_id):
                     row[6] = new_status
@@ -93,17 +111,19 @@ class TicketManager:
             writer = csv.writer(file)
             writer.writerows(rows)
 
-        print("Ticket updated.")
+        print("Ticket updated successfully.")
 
-    # Delete ticket
+    # Delete Ticket
     def delete_ticket(self, ticket_id):
-
         rows = []
 
-        with open(self.filename, "r") as file:
+        with open(self.filename, "r", newline="") as file:
             reader = csv.reader(file)
 
             for row in reader:
+
+                if len(row) < 1:
+                    continue
 
                 if row[0] != str(ticket_id):
                     rows.append(row)
@@ -112,62 +132,46 @@ class TicketManager:
             writer = csv.writer(file)
             writer.writerows(rows)
 
-        print("Ticket deleted.")
+        print("Ticket deleted successfully.")
 
-    # Export tickets
+    # Export Tickets
     def export_tickets(self):
-
-        with open(self.filename, "r") as source:
+        with open(self.filename, "r", newline="") as source:
             reader = csv.reader(source)
 
-            with open(
-                "exported_tickets.csv",
-                "w",
-                newline=""
-            ) as destination:
-
+            with open("exported_tickets.csv", "w", newline="") as destination:
                 writer = csv.writer(destination)
 
                 for row in reader:
                     writer.writerow(row)
 
-        print(
-            "Tickets exported successfully to "
-            "'exported_tickets.csv'."
-        )
+        print("Tickets exported successfully to 'exported_tickets.csv'.")
 
+    # Count Tickets
     def count_tickets(self):
 
-    open_count = 0
-    closed_count = 0
+        open_count = 0
+        closed_count = 0
 
-    with open(self.filename, "r") as file:
-        reader = csv.reader(file)
-        next(reader)
+        with open(self.filename, "r", newline="") as file:
+            reader = csv.reader(file)
 
-        for row in reader:
-            if len(row) < 7:
-                continue
+            # Skip header
+            next(reader, None)
 
-            if row[6] == "Open":
-                open_count += 1
-            elif row[6] == "Closed":
-                closed_count += 1
+            for row in reader:
 
-    print(f"Open tickets: {open_count}")
-    print(f"Closed tickets: {closed_count}")
-            
+                if len(row) < 7:
+                    continue
 
-           
+                if row[6] == "Open":
+                    open_count += 1
 
+                elif row[6] == "Closed":
+                    closed_count += 1
 
-   
-        
-
-    
-        
-    
-        
-
-             
-        
+        print("\nTicket Summary")
+        print("-" * 30)
+        print(f"Open Tickets   : {open_count}")
+        print(f"Closed Tickets : {closed_count}")
+        print("-" * 30)
