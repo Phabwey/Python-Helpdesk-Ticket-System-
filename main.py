@@ -2,8 +2,16 @@ from ticket_manager import TicketManager
 
 manager = TicketManager()
 
+print("=" * 55)
+print("        PYTHON HELPDESK TICKET SYSTEM")
+print("=" * 55)
+print("Welcome!")
+print("Manage, track and update customer support tickets.")
+print("=" * 55)
+
 while True:
-    print("\n--- Helpdesk Ticket System ---")
+
+    print("\n========== MAIN MENU ==========")
     print("1. Create Ticket")
     print("2. View Tickets")
     print("3. Search Ticket")
@@ -12,6 +20,7 @@ while True:
     print("6. Export Tickets")
     print("7. Count Open/Closed Tickets")
     print("8. Exit")
+    print("=" * 31)
 
     choice = input("Choose an option: ")
 
@@ -38,9 +47,7 @@ while True:
             print("Invalid category.")
             continue
 
-        technician = input(
-            "Assign technician: "
-        )
+        technician = input("Assign technician: ")
 
         priority = input(
             "Priority (Low, Medium, High): "
@@ -68,19 +75,13 @@ while True:
 
     elif choice == "3":
 
-        ticket_id = input(
-            "Enter ticket ID: "
-        )
+        ticket_id = input("Enter ticket ID: ")
 
-        manager.search_ticket(
-            ticket_id
-        )
+        manager.search_ticket(ticket_id)
 
     elif choice == "4":
 
-        ticket_id = input(
-            "Ticket ID: "
-        )
+        ticket_id = input("Ticket ID: ")
 
         status = input(
             "New status (Open, In Progress, Closed): "
@@ -94,20 +95,13 @@ while True:
             print("Invalid status.")
             continue
 
-        manager.update_status(
-            ticket_id,
-            status
-        )
+        manager.update_status(ticket_id, status)
 
     elif choice == "5":
 
-        ticket_id = input(
-            "Ticket ID: "
-        )
+        ticket_id = input("Ticket ID: ")
 
-        manager.delete_ticket(
-            ticket_id
-        )
+        manager.delete_ticket(ticket_id)
 
     elif choice == "6":
 
@@ -119,9 +113,11 @@ while True:
 
     elif choice == "8":
 
+        print("\nThank you for using the Python Helpdesk Ticket System.")
         print("Goodbye!")
+
         break
 
     else:
 
-        print("Invalid option.")
+        print("Invalid option. Please try again.")
